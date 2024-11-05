@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/artist.css">
+    <title>Groupie-Tracker</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="/" class="logo-link">
+                    <h1>Groupie-Tracker</h1>
+                </a>
+                <p>Artists make the music; music touches a part of our lives.</p>
+            </div>
+            <div class="search-container">
+                <form id="search-form" action="/search" method="GET">
+                    <input type="text" id="search-bar" class="search-bar" name="query" placeholder="Search..." 
+                           aria-label="Search for an artist, member, or other information" autocomplete="off" required>
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+                <div id="suggestions" class="suggestions-list"></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1>Search Results</h1>
+    
+        {{if .Artists}}
+            <h2>Artists</h2>
+            <div class="artist-container">
+                {{range .Artists}}
+                    <div class="artist-card">
+                        <a href="/artistFullProfile?artistId={{.Id}}&name={{.Name}}&image={{.Image}}">
+                            <img src="{{.Image}}" alt="image of {{.Name}}">
+                            <p>{{.Name}}</p>
+                        </a>
+                    </div>
+                {{end}}
+            </div>
+        {{end}}
+    
+        {{if .Members}}
+            <h2>Members</h2>
+            <div class="artist-container">
+                {{range .Members}}
+                    <div class="artist-card">
+                        <a href="/artistFullProfile?artistId={{.Id}}&name={{.Name}}&image={{.Image}}">
+                            <img src="{{.Image}}" alt="image of {{.Name}}">
+                            <p>{{.Name}}</p>
+                        </a>
+                    </div>
+                {{end}}
+            </div>
+        {{end}}
+    
+        {{if .CreationDates}}
+            <h2>Creation Dates</h2>
+            <div class="artist-container">
+                {{range .CreationDates}}
+                    <div class="artist-card">
+                        <a href="/artistFullProfile?artistId={{.Id}}&name={{.Name}}&image={{.Image}}">
+                            <img src="{{.Image}}" alt="image of {{.Name}}">
+                            <p>{{.Name}}</p>
+                        </a>
+                    </div>
+                {{end}}
+            </div>
+        {{end}}
+    
+        {{if .FirstAlbums}}
+            <h2>First Albums</h2>
+            <div class="artist-container">
+                {{range .FirstAlbums}}
+                    <div class="artist-card">
+                        <a href="/artistFullProfile?artistId={{.Id}}&name={{.Name}}&image={{.Image}}">
+                            <img src="{{.Image}}" alt="image of {{.Name}}">
+                            <p>{{.Name}}</p>
+                        </a>
+                    </div>
+                {{end}}
+            </div>
+        {{end}}
+    
+        {{if .Locations}}
+            <h2>Locations</h2>
+            {{range .Locations}}
+            <div class="artist-card">
+                <a href="/artistFullProfile?artistId={{.Id}}&name={{.Name}}&image={{.Image}}">
+                    <img src="{{.Image}}" alt="image of {{.Name}}">
+                    <p>{{.Name}}</p>
+                    <p>{{.Locations}}</p>
+                </a>
+            </div>
+        {{end}}
+        
+        {{end}}
+
+        {{ if (and (not .Artists) (not .Members) (not .CreationDates) (not .FirstAlbums) (not .Locations)) }}
+        <p>No results found.</p>
+            
+        {{ end }}
+    </main>
+    
+    <footer> 
+        <p>&copy; 2024 Groupie-Tracker. All rights reserved</p>
+        <p>Explore Iconic works of Legends. <a href="/">Back Home</a>.</p>
+    </footer>
+</body>
+<script src="../static/js/script.js"></script>
+</html>

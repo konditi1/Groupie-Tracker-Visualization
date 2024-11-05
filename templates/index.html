@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/artist.css">
+    <title>Groupie-Tracker</title>
+</head>
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo-link">
+                <h1>Groupie-Tracker</h1>
+            </a>
+            <p>Artists make the music; music touches a part of our lives.</p>
+        </div>
+        <div class="search-container">
+            <form id="search-form" action="/search" method="GET">
+                <input type="text" id="search-bar" class="search-bar" name="query" placeholder="Search..." 
+                       aria-label="Search for an artist, member, or other information" autocomplete="off" required>
+                <button type="submit" class="search-button">Search</button>
+            </form>
+            <div id="suggestions" class="suggestions-list"></div>
+        </div>
+    </div>
+</header>
+<body>
+    <main> 
+        <h1>Music Legends</h1>
+        <div class="artist-container">
+            {{ range .}}
+            <div class="artist-card">
+                <a href="/artistFullProfile?artistId={{.Id}}&name={{.Name}}&image={{.Image}}"><img src="{{.Image}}" alt="Artists image"></a>
+                    <p>{{.Name}}</p>
+                    <p>Creation Date: {{.CreationDate}}</p>
+                    <p>First Album released: {{.FirstAlbum}}</p>
+                    <p>Members</p>
+                    <ol>
+                        {{range .Members}}
+                            <li>{{.}}</li>
+                        {{end}}
+                    </ol>
+                    <a href="/locations?artistId={{.Id}}&name={{.Name}}">Locations</a>
+                    <br>
+                    <a href="/dates?artistId={{.Id}}&name={{.Name}}">Dates</a>
+                    <br>
+                    <a href="/relations?artistId={{.Id}}&name={{.Name}}">Relations</a>
+                    <hr>
+            </div>
+            {{end}}
+        </div>
+    </main>        
+</body>
+<footer> 
+    <p>&copy; 2024 Groupie-Tracker. All rights reserved</p>
+    <p>Explore Iconic works of Legends. <a href="/">Back Home</a>.</p>
+</footer>
+<script src="/static/js/script.js"></script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="stylesheet" href="../static/css/error.css">
+    <link rel="stylesheet" href="../static/css/artist.css">
+</head>
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo-link">
+                <h1>Groupie-Tracker</h1>
+            </a>
+            <p>Artists make the music; music touches a part of our lives.</p>
+        </div>
+    </div>
+</header>
+<body>
+    <div class="error-container">
+        <h1>Oops!</h1>
+        <p class="error-code">{{.StatusCode}}</p>
+        <p class="error-message">{{ .Message}}</p>
+        <a href="/" class="home-link">Back Home</a>
+    </div>
+</body>
+<footer> 
+    <p>&copy; 2024 Groupie-Tracker. All rights reserved</p>
+    <p>Explore Iconic works of Legends. <a href="/">Back Home</a>.</p>
+</footer>
+</html>

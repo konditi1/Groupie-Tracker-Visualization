@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/artistFullProfile.css">
+    <title>{{.Title}}</title>
+</head>
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo-link">
+                <h1>Groupie-Tracker</h1>
+            </a>
+            <p>Artists make the music; music touches a part of our lives.</p>
+        </div>
+        <div class="search-container">
+            <form id="search-form" action="/search" method="GET">
+                <input type="text" id="search-bar" class="search-bar" name="query" placeholder="Search..." 
+                       aria-label="Search for an artist, member, or other information" autocomplete="on" required>
+                <button type="submit" class="search-button">Search</button>
+            </form>
+            <div id="suggestions" class="suggestions-list"></div>
+        </div>
+    </div>
+</header>
+<body>
+   <h1>{{.Name}}</h1>
+
+    <img src="{{.Image}}" alt="artist image">
+
+    <h3>Creation Date:</h3>
+    <p>{{.Name}} Was Created In: {{.Artist.CreationDate}}</p>
+
+    <h3>First Album</h3>
+    <p>First Album released: {{.Artist.FirstAlbum}}</p>
+    
+    <h3>Members</h3>
+    <ol>
+        {{range .Artist.Members}}
+            <li>{{.}}</li>
+        {{end}}
+    </ol>
+
+    <h3>Locations</h3>
+    <ol>
+        {{range .Locations.Locations}}
+            <li>{{.}}</li>
+        {{end}}
+    </ol>
+
+    <h3>Dates</h3>
+    <ol>
+        {{range .Dates.Dates}}
+            <li>{{.}}</li>
+        {{end}}
+    </ol>
+
+    <h3>Relations</h3>    
+        {{range $relation, $dates := .Relation.DatesLocations}}
+        <h4>{{$relation}}</h4>
+        <ol>
+            {{range $dates}}
+                <li>{{.}}</li>
+            {{end}}
+        </ol>
+        {{end}}
+    </ol>
+</body>
+<footer> 
+    <p>&copy; 2024 Groupie-Tracker. All rights reserved</p>
+    <p>Explore Iconic works of Legends. <a href="/">Back Home</a>.</p>
+</footer>
+<script src="../static/js/script.js"></script>
+</html>

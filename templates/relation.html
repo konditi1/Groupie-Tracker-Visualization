@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/relation.css">
+    <title>Relations</title>
+</head>
+<body class="relations-page">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="/" class="logo-link">
+                    <h1>Groupie-Tracker</h1>
+                </a>
+                <p>Artists make the music; music touches a part of our lives.</p>
+            </div>
+            <div class="search-container">
+                <form id="search-form" action="/search" method="GET">
+                    <input type="text" id="search-bar" class="search-bar" name="query" placeholder="Search..." 
+                           aria-label="Search for an artist, member, or other information" autocomplete="off" required>
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+                <div id="suggestions" class="suggestions-list"></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1>{{.Name}}</h1> <!-- Artist's name is dynamically inserted here -->
+        <h3>Relations</h3>
+        {{range $location, $dates := .Relation.DatesLocations}}
+        <h3>{{$location}}</h3>
+        <ol>
+            {{range $dates}} 
+                <li>{{.}}</li>
+             {{end}}
+        </ol>
+         {{end}}
+    </main>
+    <footer> 
+        <p>&copy; 2024 Groupie-Tracker. All rights reserved</p>
+        <p>Explore Iconic works of Legends. <a href="/">Back Home</a>.</p>
+    </footer>
+</body>
+<script src="../static/js/script.js"></script>
+</html>
