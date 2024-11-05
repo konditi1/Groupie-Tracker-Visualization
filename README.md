@@ -55,7 +55,7 @@ The provided API consists of four main parts:
 ## Technologies Used
 
 - **Backend**: Go (Golang)
-- **Frontend**: HTML, CSS
+- **Frontend**: HTML, CSS, javascript
 - **API**: Provided by the project with endpoints for artists, locations, dates, and relations.
 
 ## Installation
