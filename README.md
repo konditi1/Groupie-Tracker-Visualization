@@ -88,6 +88,14 @@ go run .
 * Click on an artist to view detailed information about their history, members, and concerts.
 * Use the search feature to find specific artists or concerts.
 * Interact with the visual elements to explore concert locations and dates.
+  
+## Shortcut Guide
+
+- **`Ctrl + F`** — Focus Search
+- **`Alt + H`** — Home
+- **`Alt + ArrowLeft`** or **`Alt + B`** — Back
+- **`Alt + Shift + ?`** — Help
+
 
 ## API Endpoints
 
